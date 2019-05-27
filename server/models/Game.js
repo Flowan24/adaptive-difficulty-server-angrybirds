@@ -7,19 +7,22 @@ ObjectID.prototype.valueOf = function() {
   return this.toString();
 };
 
-const CommentSchema = new Schema({
-  text: {
-    type: String,
+const GameSchema = new Schema({
+  totalTurns: {
+    type: Number,
+    unique: true,
     required: true
   },
-  author: {
+  user: {
     type: Schema.Types.ObjectId,
     ref: "User"
   },
-  post: {
-    type: Schema.Types.ObjectId,
-    ref: "Post"
-  }
+  turns: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Turn"
+    }
+  ]
 });
 
-export default mongoose.model("Comment", CommentSchema);
+export default mongoose.model("Game", GameSchema);

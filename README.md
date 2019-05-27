@@ -21,7 +21,7 @@ GraphQL MongoDB Server
 
 ## Introduction
 
-This is a server boilerplate using GraphQL and MongoDB. Support subscriptions using GraphQL Yoga. 
+This is a server boilerplate using GraphQL and MongoDB. Support subscriptions using GraphQL Yoga.
 
 ## Getting started
 
@@ -35,6 +35,55 @@ This is a server boilerplate using GraphQL and MongoDB. Support subscriptions us
 
 - `npm start` - start the playground at `http://localhost:4000/playground`
 
+--
 ## License
 
 MIT license, Copyright (c) 2018 Leonardo Maldonado.
+
+
+# Write your query or mutation here
+
+`query getUser {
+  user(_id:"5cebd34e71892b47a8f8997b")
+  {_id,email,games{_id, totalTurns}}
+}
+query getGame {
+  game(_id:"5cec454818515407788f0c00")
+  {_id,totalTurns,user{_id,email}}
+}
+query getTurn {
+  turn(_id:"5cec52b23623063d4c86f7bf")
+  {_id,turnNumber,error,targetPosition,game{_id}}
+}
+
+query users{ users{_id, email, games {totalTurns}}}
+query games{ games{_id,totalTurns, user{_id,email}}}
+query turns{ turns{_id, turnNumber,error,targetPosition,game{_id}}}
+
+mutation CreateGame($cg: CreateGameInput!) {
+  createGame(game: $cg) {_id}
+}
+mutation CreateUser($cu: CreateUserInput!) {
+  createUser(user: $cu) {_id, email}
+}
+mutation CreateTurn($ct: CreateTurnInput!) {
+  createTurn(turn: $ct) {_id}
+}`
+
+Variables
+`{
+  "cg": {
+    "user": "5cebd34e71892b47a8f8997b",
+    "totalTurns":1
+  },
+  "cu": {
+    "email":
+    "test@test.at"
+  },
+  "ct": {
+    "game":"5cec454818515407788f0c00",
+    "turnNumber": 1,
+    "targetPosition": [6.024816036224365,-3.5],
+    "error": [-2.7630248069763185,-0.45874953269958498]
+  }
+}`

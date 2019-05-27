@@ -1,9 +1,9 @@
 import User from "../../models/User";
-import Post from "../../models/Post";
-import Comment from "../../models/Comment";
+import Game from "../../models/Game";
+import Turn from "../../models/Turn";
 
 export const models = {
   User,
-  Post,
-  Comment
+  Game,
+  Turn
 };

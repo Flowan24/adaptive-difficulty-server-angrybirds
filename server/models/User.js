@@ -8,29 +8,15 @@ ObjectID.prototype.valueOf = function() {
 };
 
 const UserSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
   email: {
     type: String,
     unique: true,
     required: true
   },
-  age: {
-    type: Number,
-    required: true
-  },
-  posts: [
+  games: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Post"
-    }
-  ],
-  comments: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Comment"
+      ref: "Game"
     }
   ]
 });

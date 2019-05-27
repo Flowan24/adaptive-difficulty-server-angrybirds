@@ -1,6 +1,5 @@
 import User from "../../../server/models/User";
-import Post from "../../../server/models/Post";
-import Comment from "../../../server/models/Comment";
+import Game from "../../../server/models/Game";
 
 export default {
   Query: {
@@ -14,20 +13,16 @@ export default {
 
       return users.map(u => ({
         _id: u._id.toString(),
-        name: u.name,
         email: u.email,
-        age: u.age,
-        posts: u.posts,
-        comments: u.comments
+        games: u.games
       }));
     }
   },
   Mutation: {
     createUser: async (parent, { user }, context, info) => {
       const newUser = await new User({
-        name: user.name,
         email: user.email,
-        age: user.age
+        games: user.games
       });
 
       return new Promise((resolve, reject) => {
@@ -54,11 +49,12 @@ export default {
     }
   },
   User: {
-    posts: async ({ _id }, args, context, info) => {
-      return await Post.find({ author: _id });
-    },
-    comments: async ({ _id }, args, context, info) => {
-      return await Comment.find({ author: _id });
+    games: async ({ _id }, args, context, info) => {
+      return new Promise((resolve, reject) => {
+        Game.find({ user:_id }).exec((err, res) => {
+          err ? reject(err) : resolve(res);
+        });
+      });
     }
   }
 };

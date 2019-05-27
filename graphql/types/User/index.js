@@ -1,11 +1,8 @@
 export default `
   type User {
-    _id: String!
-    name: String!
+    _id: ID!
     email: String!
-    age: Int!
-    posts: [Post!]!
-    comments: [Comment!]!
+    games: [Game!]
   }
 
   type Query {
@@ -20,14 +17,10 @@ export default `
   }
 
   input CreateUserInput {
-    name: String!
     email: String!
-    age: Int!
   }
-  
+
   input UpdateUserInput {
-    name: String
     email: String
-    age: Int
-  } 
+  }
 `;
