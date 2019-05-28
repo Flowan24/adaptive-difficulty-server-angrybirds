@@ -13,6 +13,11 @@ const UserSchema = new Schema({
     unique: true,
     required: true
   },
+  accessToken: {
+    type: String,
+    unique: true,
+    required: true
+  },
   games: [
     {
       type: Schema.Types.ObjectId,

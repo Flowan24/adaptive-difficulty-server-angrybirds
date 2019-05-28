@@ -2,11 +2,12 @@ export default `
   type User {
     _id: ID!
     email: String!
+    accessToken: String!
     games: [Game!]
   }
 
   type Query {
-    user(_id: ID!): User!
+    user(accessToken: String!): User!
     users: [User!]!
   }
 
