@@ -14,8 +14,7 @@ export default {
 
       const result = games.map(u => ({
         _id: u._id.toString(),
-        user: u.user,
-        totalTurns: u.totalTurns
+        user: u.user
       }));
 
       return result;
@@ -25,8 +24,6 @@ export default {
     createGame: async (parent, { game }, context, info) => {
       const newGame = await new Game({
           user: game.user,
-          totalTurns: game.totalTurns
-          //turns: game.turns
       });
 
       return new Promise((resolve, reject) => {

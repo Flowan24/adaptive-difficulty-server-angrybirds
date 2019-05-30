@@ -7,11 +7,11 @@ export default {
       return await Turn.findOne({ _id }).exec();
     },
     turns: async (parent, args, context, info) => {
-      const games = await Turn.find({})
+      const turns = await Turn.find({})
         .populate()
         .exec();
 
-      const result = games.map(u => ({
+      const result = turns.map(u => ({
         _id: u._id.toString(),
         game: u.game,
         turnNumber: u.turnNumber,

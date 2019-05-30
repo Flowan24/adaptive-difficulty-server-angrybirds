@@ -45,19 +45,19 @@ MIT license, Copyright (c) 2018 Leonardo Maldonado.
 
 `query getUser {
   user(_id:"5cebd34e71892b47a8f8997b")
-  {_id,email,games{_id, totalTurns}}
+  {_id,email,games{_id}}
 }
 query getGame {
   game(_id:"5cec454818515407788f0c00")
-  {_id,totalTurns,user{_id,email}}
+  {_id,user{_id,email}}
 }
 query getTurn {
   turn(_id:"5cec52b23623063d4c86f7bf")
   {_id,turnNumber,error,targetPosition,game{_id}}
 }
 
-query users{ users{_id, email, games {totalTurns}}}
-query games{ games{_id,totalTurns, user{_id,email}}}
+query users{ users{_id, email, games {_id}}}
+query games{ games{_id, user{_id,email}}}
 query turns{ turns{_id, turnNumber,error,targetPosition,game{_id}}}
 
 mutation CreateGame($cg: CreateGameInput!) {
@@ -73,8 +73,7 @@ mutation CreateTurn($ct: CreateTurnInput!) {
 Variables
 `{
   "cg": {
-    "user": "5cebd34e71892b47a8f8997b",
-    "totalTurns":1
+    "user": "5cebd34e71892b47a8f8997b"
   },
   "cu": {
     "email":

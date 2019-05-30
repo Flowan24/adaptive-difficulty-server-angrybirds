@@ -8,11 +8,6 @@ ObjectID.prototype.valueOf = function() {
 };
 
 const GameSchema = new Schema({
-  totalTurns: {
-    type: Number,
-    unique: true,
-    required: true
-  },
   user: {
     type: Schema.Types.ObjectId,
     ref: "User"

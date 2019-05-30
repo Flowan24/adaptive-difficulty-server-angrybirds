@@ -2,7 +2,6 @@ export default `
   type Game {
     _id: ID!
     user: User!
-    totalTurns: Int!
     turns: [Turn!]!
   }
 
@@ -19,11 +18,9 @@ export default `
 
   input CreateGameInput {
     user: ID!
-    totalTurns : Int!
   }
 
   input UpdateGameInput {
     user: ID!
-    totalTurns: Int!
   }
 `;
