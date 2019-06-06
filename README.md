@@ -43,44 +43,42 @@ MIT license, Copyright (c) 2018 Leonardo Maldonado.
 
 # Write your query or mutation here
 
-`query getUser {
-  user(_id:"5cebd34e71892b47a8f8997b")
-  {_id,email,games{_id}}
+`query getUser($userAccesstoken:String!) {
+  user(accessToken:$userAccesstoken)
+  {_id,email,accessToken,createdAt,updatedAt,games{_id}}
 }
 query getGame {
-  game(_id:"5cec454818515407788f0c00")
-  {_id,user{_id,email}}
+  game(_id:"5cf925235d97fc21ecd63fcc")
+  {_id,user{_id,accessToken,email},createdAt,updatedAt, turns{_id,error}}
 }
 query getTurn {
-  turn(_id:"5cec52b23623063d4c86f7bf")
-  {_id,turnNumber,error,targetPosition,game{_id}}
+  turn(_id:"5cf9252e5d97fc21ecd63fcd")
+  {_id,turnNumber,error,,createdAt,updatedAt,targetPosition,game{_id}}
 }
 
 query users{ users{_id, email, games {_id}}}
-query games{ games{_id, user{_id,email}}}
-query turns{ turns{_id, turnNumber,error,targetPosition,game{_id}}}
+query games{ games{_id, user{accessToken,email}}}
+query turns{ turns{_id, turnNumber,targetPosition}}
 
-mutation CreateGame($cg: CreateGameInput!) {
+mutation createGame($cg: CreateGameInput!) {
   createGame(game: $cg) {_id}
 }
 mutation CreateUser($cu: CreateUserInput!) {
-  createUser(user: $cu) {_id, email}
+  createUser(user: $cu) {_id, accessToken}
 }
-mutation CreateTurn($ct: CreateTurnInput!) {
+mutation createTurn($ct: CreateTurnInput!) {
   createTurn(turn: $ct) {_id}
 }`
 
 Variables
 `{
+  "userAccesstoken":"c8js",
   "cg": {
-    "user": "5cebd34e71892b47a8f8997b"
+    "user": "5cf924ed5d97fc21ecd63fcb"
   },
-  "cu": {
-    "email":
-    "test@test.at"
-  },
+  "cu": {"email": "test3@test.at"},
   "ct": {
-    "game":"5cec454818515407788f0c00",
+    "game":"5cf925235d97fc21ecd63fcc",
     "turnNumber": 1,
     "targetPosition": [6.024816036224365,-3.5],
     "error": [-2.7630248069763185,-0.45874953269958498]

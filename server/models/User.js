@@ -24,6 +24,6 @@ const UserSchema = new Schema({
       ref: "Game"
     }
   ]
-});
+},{ timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } });
 
 export default mongoose.model("User", UserSchema);

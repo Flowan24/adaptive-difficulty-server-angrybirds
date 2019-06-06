@@ -1,10 +1,12 @@
 export default `
-  type Turn {
+  type Turn implements IEntity {
     _id: ID!
     turnNumber: Int!
     targetPosition: [Float]!
     error: [Float]!
     game: Game!
+    createdAt: String!
+    updatedAt: String!
   }
 
   type Query {

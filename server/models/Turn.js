@@ -24,6 +24,6 @@ const TurnSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Game"
   }
-});
+},{ timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } });
 
 export default mongoose.model("Turn", TurnSchema);

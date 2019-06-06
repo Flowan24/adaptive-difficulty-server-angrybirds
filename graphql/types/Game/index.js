@@ -1,8 +1,10 @@
 export default `
-  type Game {
+  type Game implements IEntity {
     _id: ID!
     user: User!
     turns: [Turn!]!
+    createdAt: String!
+    updatedAt: String!
   }
 
   type Query {

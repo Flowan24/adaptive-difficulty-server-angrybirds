@@ -5,7 +5,10 @@ import resolvers from "./resolvers/";
 
 const schema = makeExecutableSchema({
   typeDefs,
-  resolvers
+  resolvers,
+  resolverValidationOptions: {
+    requireResolversForResolveType:false
+  }
 });
 
 export default schema;

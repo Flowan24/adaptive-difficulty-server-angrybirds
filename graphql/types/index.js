@@ -1,10 +1,11 @@
 import { mergeTypes } from "merge-graphql-schemas";
 
+import IEntity from "./IEntity";
 import User from "./User/";
 import Game from "./Game/";
 import Turn from "./Turn/";
 
-const typeDefs = [User, Game, Turn];
+const typeDefs = [IEntity, User, Game, Turn];
 
 // NOTE: 2nd param is optional, and defaults to false
 // Only use if you have defined the same type multiple times in

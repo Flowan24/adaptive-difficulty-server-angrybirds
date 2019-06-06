@@ -18,6 +18,6 @@ const GameSchema = new Schema({
       ref: "Turn"
     }
   ]
-});
+},{ timestamps: { createdAt: 'createdAt', updatedAt: 'updatedAt' } });
 
 export default mongoose.model("Game", GameSchema);
