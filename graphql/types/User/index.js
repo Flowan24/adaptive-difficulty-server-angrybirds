@@ -1,9 +1,9 @@
 export default `
   type User implements IEntity {
     _id: ID!
-    email: String!
-    accessToken: String!
-    games: [Game!]
+    email: String
+    accessToken: String
+    games: [Game]
     createdAt: String!
     updatedAt: String!
   }

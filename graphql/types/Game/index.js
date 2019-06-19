@@ -1,8 +1,8 @@
 export default `
   type Game implements IEntity {
     _id: ID!
-    user: User!
-    turns: [Turn!]!
+    user: User
+    turns: [Turn]
     createdAt: String!
     updatedAt: String!
   }
